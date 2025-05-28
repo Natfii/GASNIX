@@ -75,7 +75,7 @@ case "${DEVICE}" in
   SM8250|SM8550)
     [ "${ENABLE_32BIT}" == "true" ] && EMUS_32BIT="box86 daedalusx64-sa desmume-lr gpsp-lr pcsx_rearmed-lr"
     PKG_EMUS+=" aethersx2-sa azahar-sa box64 cemu-sa dolphin-sa lime3ds-sa melonds-sa nanoboyadvance-sa portmaster rpcs3-sa scummvmsa supermodel-sa \
-               yabasanshiro-sa xemu-sa duckstation-sa"
+               yabasanshiro-sa xemu-sa duckstation-sa citron-sa"
     LIBRETRO_CORES+=" beetle-psx-lr beetle-saturn-lr bsnes-lr bsnes-hd-lr dolphin-lr flycast2021-lr geolith-lr panda3ds-lr pcsx_rearmed-lr uae4arm kronos-lr"
     PKG_RETROARCH+=" retropie-shaders"
   ;;
@@ -207,7 +207,7 @@ makeinstall_target() {
   add_es_system amstradcpc
 
   ### Arcade
-  add_emu_core arcade retroarch mame2003_plus true
+  add_emu_core arcade retroarch mame2003_plus false
   add_emu_core arcade retroarch mame2010 false
   add_emu_core arcade retroarch mame2015 false
   add_emu_core arcade retroarch fbneo false
@@ -297,7 +297,7 @@ makeinstall_target() {
   add_es_system vic20
 
   ### Capcom Playsystem 1
-  add_emu_core cps1 retroarch fbneo true
+  add_emu_core cps1 retroarch fbneo false
   add_emu_core cps1 retroarch mame2003_plus false
   add_emu_core cps1 retroarch mame2010 false
   add_emu_core cps1 retroarch fbalpha2012 false
@@ -309,7 +309,7 @@ makeinstall_target() {
   add_es_system cps1
 
   ### Capcom Playsystem 2
-  add_emu_core cps2 retroarch fbneo true
+  add_emu_core cps2 retroarch fbneo false
   add_emu_core cps2 retroarch mame2003_plus false
   add_emu_core cps2 retroarch mame2010 false
   add_emu_core cps2 retroarch fbalpha2012 false
@@ -321,7 +321,7 @@ makeinstall_target() {
   add_es_system cps2
 
   ### Capcom Playsystem 3
-  add_emu_core cps3 retroarch fbneo true
+  add_emu_core cps3 retroarch fbneo false
   add_emu_core cps3 retroarch mame2003_plus false
   add_emu_core cps3 retroarch mame2010 false
   add_emu_core cps3 retroarch fbalpha2012 false
@@ -385,7 +385,7 @@ makeinstall_target() {
   add_es_system fds
 
   ### Final Burn Neo
-  add_emu_core fbn retroarch fbneo true
+  add_emu_core fbn retroarch fbneo false
   add_emu_core fbn retroarch mame2003_plus false
   add_emu_core fbn retroarch mame2010 false
   add_emu_core fbn retroarch mame2015 false
@@ -558,6 +558,15 @@ makeinstall_target() {
     ;;
   esac
 
+  ### Nintendo Switch
+  case ${DEVICE} in
+    SM8250|SM8550)
+      add_emu_core switch citron citron-sa true
+      add_es_system switch
+      install_script "Start Citron.sh"
+    ;;
+  esac
+
   ### Sega GameGear
   add_emu_core gamegear retroarch gearsystem true
   add_emu_core gamegear retroarch genesis_plus_gx false
@@ -609,7 +618,7 @@ makeinstall_target() {
   add_es_system zmachine
 
   ### Arcade (MAME)
-  add_emu_core mame retroarch mame2003_plus true
+  add_emu_core mame retroarch mame2003_plus false
   add_emu_core mame retroarch mame2010 false
   add_emu_core mame retroarch mame2015 false
   add_emu_core mame retroarch mame false
@@ -682,7 +691,7 @@ makeinstall_target() {
   add_es_system naomi
 
   ### SNK NeoGeo
-  add_emu_core neogeo retroarch fbneo true
+  add_emu_core neogeo retroarch fbneo false
   add_emu_core neogeo retroarch mame2003_plus false
   add_emu_core neogeo retroarch fbalpha2012 false
   add_emu_core neogeo retroarch fbalpha2019 false
