@@ -1,12 +1,13 @@
-<img src="https://raw.githubusercontent.com/ROCKNIX/distribution/dev/distributions/ROCKNIX/logos/rocknix-logo.png" width=192>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Latest Version](https://img.shields.io/github/release/ROCKNIX/distribution.svg?color=FF5555&label=latest%20version&style=flat-square)](https://github.com/ROCKNIX/distribution/releases/latest) [![Activity](https://img.shields.io/github/commit-activity/m/ROCKNIX/distribution?color=FF5555&style=flat-square)](https://github.com/ROCKNIX/distribution/commits) [![Pull Requests](https://img.shields.io/github/issues-pr-closed/ROCKNIX/distribution?color=FF5555&style=flat-square)](https://github.com/ROCKNIX/distribution/pulls) [![Discord Server](https://img.shields.io/discord/948029830325235753?color=FF5555&label=chat&style=flat-square)](https://discord.gg/seTxckZjJy)
+![gasnix-logo](https://github.com/user-attachments/assets/edc7be96-3a78-4edb-bb83-0dd8acb92700) 
 
 ---
 
-ROCKNIX is an immutable Linux distribution for handheld gaming devices developed by a small community of enthusiasts.  Our goal is to produce an operating system that has the features and capabilities that we need, and to have fun as we develop it.
+ROCKNIX is an immutable Linux distribution for handheld gaming devices developed by a small community of enthusiasts. GASNIX is a fork that includes tools and emulators not in the original distribution. This distribution is a personal project only.
 
 ## Features
 
 * ROCKNIX has a very active community of developers and users.
+* Citron for NS homebrew.
 * Integrated cross-device local and remote network play.
 * In-game touch support on supported devices.
 * Fine grain control for battery life or performance.
@@ -29,10 +30,6 @@ ROCKNIX is an immutable Linux distribution for handheld gaming devices developed
     <td><img src="https://rocknix.org/_inc/images/screenshots/gamelist-view-no-metadata-immersive.png"/></td>
   </tr>
 </table>
-
-## Community
-
-The ROCKNIX community utilizes Discord for discussion, if you would like to join us please use this link: [https://discord.gg/seTxckZjJy](https://discord.gg/seTxckZjJy)
 
 ## Licenses
 
@@ -60,4 +57,4 @@ All other software is provided under each component's respective license.  These
 
 ## Credits
 
-Like any Linux distribution, this project is not the work of one person.  It is the work of many persons all over the world who have developed the open source bits without which this project could not exist.  Special thanks to CoreELEC, LibreELEC, JELOS, and to developers and contributors across the open source community.
+Like any Linux distribution, this project is not the work of one person.  It is the work of many persons all over the world who have developed the open source bits without which this project could not exist.  Special thanks to CoreELEC, LibreELEC, JELOS, ROCKNIX, and to developers and contributors across the open source community.
