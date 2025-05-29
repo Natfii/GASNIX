@@ -1,10 +1,13 @@
+![gasnix-logo](https://github.com/user-attachments/assets/edc7be96-3a78-4edb-bb83-0dd8acb92700) 
 
+---
 
 ROCKNIX is an immutable Linux distribution for handheld gaming devices developed by a small community of enthusiasts. GASNIX is a fork that includes tools and emulators not in the original distribution. This distribution is a personal project only.
 
 ## Features
 
 * ROCKNIX has a very active community of developers and users.
+* Citron for NS homebrew.
 * Integrated cross-device local and remote network play.
 * In-game touch support on supported devices.
 * Fine grain control for battery life or performance.
