@@ -1,4 +1,6 @@
-"ROCKNIX is an immutable Linux distribution for handheld gaming devices developed by a small community of enthusiasts.  Our goal is to produce an operating system that has the features and capabilities that we need, and to have fun as we develop it."
+
+
+ROCKNIX is an immutable Linux distribution for handheld gaming devices developed by a small community of enthusiasts. GASNIX is a fork that includes tools and emulators not in the original distribution. This distribution is a personal project only.
 
 ## Features
 
