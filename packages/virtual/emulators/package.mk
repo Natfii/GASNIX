@@ -16,7 +16,7 @@ LIBRETRO_CORES="81-lr a5200-lr arduous-lr atari800-lr beetle-gba-lr beetle-lynx-
                 beetle-pcfx-lr bsnes-mercury-accuracy-lr bsnes-mercury-balanced-lr bsnes-mercury-performance-lr beetle-supafaust-lr  \
                 beetle-supergrafx-lr beetle-vb-lr beetle-wswan-lr bluemsx-lr cap32-lr crocods-lr daphne-lr doublecherrygb-lr         \
                 dosbox-svn-lr dosbox-pure-lr duckstation-lr easyrpg-lr emuscv-lr fake08-lr fbalpha2012-lr                            \
-                fbalpha2019-lr fbneo-lr fceumm-lr flycast-lr fmsx-lr freechaf-lr freeintv-lr freej2me-lr fuse-lr gambatte-lr     \
+                fbalpha2019-lr fbneo-lr fceumm-lr flycast-lr fmsx-lr freechaf-lr freeintv-lr freej2me-lr fuse-lr gambatte-lr         \
                 gearboy-lr gearcoleco-lr gearsystem-lr genesis-plus-gx-lr genesis-plus-gx-wide-lr gw-lr handy-lr hatari-lr idtech-lr \
                 jaxe-lr mame-lr mame2003-plus-lr mame2010-lr mame2015-lr melonds-lr melonds-ds-lr mesen-lr mgba-lr minivmac-lr       \
                 mojozork-lr mu-lr mupen64plus-lr mupen64plus-nx-lr neocd_lr nestopia-lr np2kai-lr o2em-lr opera-lr parallel-n64-lr   \
@@ -25,16 +25,21 @@ LIBRETRO_CORES="81-lr a5200-lr arduous-lr atari800-lr beetle-gba-lr beetle-lynx-
                 snes9x2010-lr stella-lr swanstation-lr tgbdual-lr theodore-lr tic80-lr uzem-lr vba-next-lr vbam-lr vecx-lr vice-lr   \
                 vircon32-lr virtualjaguar-lr xmil-lr wasm4-lr yabasanshiro-lr"
 
+#if [ "${DEVICE}" != "AMD64" ]; then
+#    LIBRETRO_CORES+=" mame2010-lr mame2015-lr"
+#fi
+
 ### Emulators or cores for specific devices
 case "${DEVICE}" in
   AMD64)
     PKG_EMUS+=" azahar-sa cemu-sa dolphin-sa lime3ds-sa mednafen melonds-sa minivmacsa mupen64plus-sa nanoboyadvance-sa pcsx2-sa     \
-               rpcs3-sa scummvmsa vita3k-sa xemu-sa duckstation-sa"
+               rpcs3-sa scummvmsa vita3k-sa xemu-sa duckstation-sa citron-sa eden-sa"
     LIBRETRO_CORES+=" beetle-psx-lr beetle-saturn-lr bsnes-lr bsnes-hd-lr desmume-lr dolphin-lr lrps2-lr panda3ds-lr play-lr"
   ;;
   RK3588)
     [ "${ENABLE_32BIT}" == "true" ] && EMUS_32BIT="box86 desmume-lr gpsp-lr pcsx_rearmed-lr"
-    PKG_EMUS+=" aethersx2-sa azahar-sa box64 dolphin-sa lime3ds-sa drastic-sa mednafen melonds-sa portmaster scummvmsa supermodel-sa yabasanshiro-sa duckstation-sa"
+    PKG_EMUS+=" aethersx2-sa azahar-sa box64 dolphin-sa lime3ds-sa drastic-sa mednafen melonds-sa portmaster scummvmsa supermodel-sa  \
+                yabasanshiro-sa duckstation-sa citron-sa"
     LIBRETRO_CORES+=" beetle-psx-lr beetle-saturn-lr bsnes-lr bsnes-hd-lr dolphin-lr flycast2021-lr geolith-lr panda3ds-lr pcsx_rearmed-lr uae4arm"
     PKG_RETROARCH+=" retropie-shaders"
   ;;
@@ -207,7 +212,7 @@ makeinstall_target() {
   add_es_system amstradcpc
 
   ### Arcade
-  add_emu_core arcade retroarch mame2003_plus false
+  add_emu_core arcade retroarch mame2003_plus true
   add_emu_core arcade retroarch mame2010 false
   add_emu_core arcade retroarch mame2015 false
   add_emu_core arcade retroarch fbneo false
@@ -297,7 +302,7 @@ makeinstall_target() {
   add_es_system vic20
 
   ### Capcom Playsystem 1
-  add_emu_core cps1 retroarch fbneo false
+  add_emu_core cps1 retroarch fbneo true
   add_emu_core cps1 retroarch mame2003_plus false
   add_emu_core cps1 retroarch mame2010 false
   add_emu_core cps1 retroarch fbalpha2012 false
@@ -309,7 +314,7 @@ makeinstall_target() {
   add_es_system cps1
 
   ### Capcom Playsystem 2
-  add_emu_core cps2 retroarch fbneo false
+  add_emu_core cps2 retroarch fbneo true
   add_emu_core cps2 retroarch mame2003_plus false
   add_emu_core cps2 retroarch mame2010 false
   add_emu_core cps2 retroarch fbalpha2012 false
@@ -321,7 +326,7 @@ makeinstall_target() {
   add_es_system cps2
 
   ### Capcom Playsystem 3
-  add_emu_core cps3 retroarch fbneo false
+  add_emu_core cps3 retroarch fbneo true
   add_emu_core cps3 retroarch mame2003_plus false
   add_emu_core cps3 retroarch mame2010 false
   add_emu_core cps3 retroarch fbalpha2012 false
@@ -385,7 +390,7 @@ makeinstall_target() {
   add_es_system fds
 
   ### Final Burn Neo
-  add_emu_core fbn retroarch fbneo false
+  add_emu_core fbn retroarch fbneo true
   add_emu_core fbn retroarch mame2003_plus false
   add_emu_core fbn retroarch mame2010 false
   add_emu_core fbn retroarch mame2015 false
@@ -560,7 +565,17 @@ makeinstall_target() {
 
   ### Nintendo Switch
   case ${DEVICE} in
-    SM8250|SM8550)
+    AMD64)
+      add_emu_core switch eden eden-sa true
+      add_emu_core switch citron citron-sa false
+      add_es_system switch
+      install_script "Start Eden.sh"
+      install_script "Start Citron.sh"
+    ;;
+  esac
+
+  case ${DEVICE} in
+    RK3588|SM8*)
       add_emu_core switch citron citron-sa true
       add_es_system switch
       install_script "Start Citron.sh"
@@ -618,7 +633,7 @@ makeinstall_target() {
   add_es_system zmachine
 
   ### Arcade (MAME)
-  add_emu_core mame retroarch mame2003_plus false
+  add_emu_core mame retroarch mame2003_plus true
   add_emu_core mame retroarch mame2010 false
   add_emu_core mame retroarch mame2015 false
   add_emu_core mame retroarch mame false
@@ -691,7 +706,7 @@ makeinstall_target() {
   add_es_system naomi
 
   ### SNK NeoGeo
-  add_emu_core neogeo retroarch fbneo false
+  add_emu_core neogeo retroarch fbneo true
   add_emu_core neogeo retroarch mame2003_plus false
   add_emu_core neogeo retroarch fbalpha2012 false
   add_emu_core neogeo retroarch fbalpha2019 false
