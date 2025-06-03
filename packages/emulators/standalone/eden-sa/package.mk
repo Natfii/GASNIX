@@ -39,7 +39,8 @@ PKG_CMAKE_OPTS_TARGET+="-DENABLE_QT=ON \
                     -DENABLE_WEB_SERVICE=OFF \
                     -DYUZU_DOWNLOAD_ANDROID_VVL=OFF \
                     -DYUZU_ENABLE_PORTABLE=OFF \
-                    -DYUZU_USE_BUNDLED_FFMPEG=OFF"
+                    -DYUZU_USE_BUNDLED_FFMPEG=OFF \
+                    -Wno-shadow"
 
 #pre_configure_target() {
   #echo ${PKG_DEPENDS_TARGET}
