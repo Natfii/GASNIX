@@ -1,22 +1,18 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5144dc028..ffbffe76d 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -17,6 +17,14 @@ if (MSVC)
-     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 /WX-")
- endif()
+diff --git a/src/common/settings.h b/src/common/settings.h
+index 8c62716ba..43ac9df91 100644
+--- a/src/common/settings.h
++++ b/src/common/settings.h
+@@ -216,9 +216,8 @@ struct Values {
+     SwitchableSetting<bool> sync_core_speed{linkage, false, "sync_core_speed", Category::Core, Specialization::Default};
  
-+# For GCC and Clang, stop treating shadow warnings as errors:
-+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
-+    OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-+  add_compile_options(-Wno-error=shadow)
-+  # (optional) if you’d like to hide the "shadow" warning entirely:
-+  # add_compile_options(-Wno-shadow)
-+endif()
-+
- # Check if SDL2::SDL2 target exists; if not, create an alias
- if (TARGET SDL2::SDL2-static)
-     add_library(SDL2::SDL2 ALIAS SDL2::SDL2-static)
+     // Memory
+-    #ifdef ANDROID
+     SwitchableSetting<bool> lru_cache_enabled{linkage, true, "use_lru_cache", Category::System};
+-    #endif
++    
+ 
+     // Cpu
+     SwitchableSetting<CpuBackend, true> cpu_backend{linkage,
 diff --git a/src/core/arm/nce/lru_cache.h b/src/core/arm/nce/lru_cache.h
 index aacab368c..a075a777a 100644
 --- a/src/core/arm/nce/lru_cache.h
