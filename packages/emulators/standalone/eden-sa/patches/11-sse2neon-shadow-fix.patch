@@ -1,7 +1,20 @@
 diff --git a/externals/sse2neon/sse2neon.h b/externals/sse2neon/sse2neon.h
-index 66b93c1c7..3eaba369f 100755
+index 66b93c1c7..a45b36ed8 100755
 --- a/externals/sse2neon/sse2neon.h
 +++ b/externals/sse2neon/sse2neon.h
+@@ -8219,10 +8219,10 @@ FORCE_INLINE int _sse2neon_ctzll(unsigned long long x)
+     } else {                                                                   \
+         if (bound == 16) {                                                     \
+             dst = vreinterpretq_m128i_u16(                                     \
+-                vsetq_lane_u16(r2 & 0xffff, vreinterpretq_u16_m128i(dst), 0)); \
++                vsetq_lane_u16((uint16_t)(r2 & 0xffff), vreinterpretq_u16_m128i(dst), 0); \
+         } else {                                                               \
+             dst = vreinterpretq_m128i_u8(                                      \
+-                vsetq_lane_u8(r2 & 0xff, vreinterpretq_u8_m128i(dst), 0));     \
++                vsetq_lane_u8((uint8_t)(r2 & 0xff), vreinterpretq_u8_m128i(dst), 0);  \
+         }                                                                      \
+     }                                                                          \
+     return dst
 @@ -9056,15 +9056,15 @@ FORCE_INLINE __m128i _mm_aesimc_si128(__m128i a)
  FORCE_INLINE __m128i _mm_aeskeygenassist_si128(__m128i a, const int rcon)
  {
