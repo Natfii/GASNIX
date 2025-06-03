@@ -1,0 +1,34 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5144dc028..ffbffe76d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,6 +17,14 @@ if (MSVC)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 /WX-")
+ endif()
+ 
++# For GCC and Clang, stop treating shadow warnings as errors:
++if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
++    OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
++  add_compile_options(-Wno-error=shadow)
++  # (optional) if you’d like to hide the "shadow" warning entirely:
++  # add_compile_options(-Wno-shadow)
++endif()
++
+ # Check if SDL2::SDL2 target exists; if not, create an alias
+ if (TARGET SDL2::SDL2-static)
+     add_library(SDL2::SDL2 ALIAS SDL2::SDL2-static)
+diff --git a/src/core/arm/nce/lru_cache.h b/src/core/arm/nce/lru_cache.h
+index aacab368c..a075a777a 100644
+--- a/src/core/arm/nce/lru_cache.h
++++ b/src/core/arm/nce/lru_cache.h
+@@ -14,8 +14,8 @@ private:
+     std::unordered_map<KeyType, std::pair<typename std::list<KeyType>::iterator, ValueType>> cache_map;
+ 
+ public:
+-    explicit LRUCache(size_t capacity, bool enabled = true) : enabled(enabled), capacity(capacity) {
+-        cache_map.reserve(capacity);
++    explicit LRUCache(size_t cap, bool en = true) : enabled(en), capacity(cap) {
++        cache_map.reserve(cap);
+         LOG_WARNING(Core, "LRU Cache initialized with state: {}", enabled ? "enabled" : "disabled");
+     }
+ 
