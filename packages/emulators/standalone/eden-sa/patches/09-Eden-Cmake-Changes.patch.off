@@ -11,7 +11,7 @@ index 5144dc028..ffbffe76d 100644
 +    OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 +  add_compile_options(-Wno-error=shadow)
 +  # (optional) if you’d like to hide the "shadow" warning entirely:
-+  # add_compile_options(-Wno-shadow)
++  add_compile_options(-Wno-shadow)
 +endif()
 +
  # Check if SDL2::SDL2 target exists; if not, create an alias
