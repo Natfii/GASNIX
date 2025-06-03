@@ -17,3 +17,16 @@ index 5144dc028..ffbffe76d 100644
  # Check if SDL2::SDL2 target exists; if not, create an alias
  if (TARGET SDL2::SDL2-static)
      add_library(SDL2::SDL2 ALIAS SDL2::SDL2-static)
+diff --git a/externals/CMakeLists.txt b/externals/CMakeLists.txt
+index fd3f54ae4..8962c52be 100644
+--- a/externals/CMakeLists.txt
++++ b/externals/CMakeLists.txt
+@@ -5,6 +5,8 @@
+ # some of its variables, which is only possible in 3.13+
+ set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+ 
++add_compile_options(-Wno-error=shadow)
++
+ # Disable tests in all externals supporting the standard option name
+ set(BUILD_TESTING OFF)
+ 
