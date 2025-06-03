@@ -577,8 +577,10 @@ makeinstall_target() {
   case ${DEVICE} in
     RK3588|SM8*)
       add_emu_core switch citron citron-sa true
+      add_emu_core switch eden eden-sa true
       add_es_system switch
       install_script "Start Citron.sh"
+      install_script "Start Eden.sh"
     ;;
   esac
 
