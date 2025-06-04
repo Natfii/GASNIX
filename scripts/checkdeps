@@ -234,10 +234,12 @@ case "${DISTRO}" in
         [go]=golang-go
       )
 # qt6 required packages
+      pcdir=$(for d in /usr/lib/*-linux-gnu; do [ -d "$d/pkgconfig" ] && echo "$d/pkgconfig" && break; done)
+
       file_map+=(
-       [/usr/lib/x86_64-linux-gnu/pkgconfig/gl.pc]=libgl1-mesa-dev
-       [/usr/lib/x86_64-linux-gnu/pkgconfig/xext.pc]=libxext-dev
-       [/usr/lib/x86_64-linux-gnu/pkgconfig/wayland-scanner.pc]=libwayland-dev
+        [$pcdir/gl.pc]=libgl1-mesa-dev
+        [$pcdir/xext.pc]=libxext-dev
+        [$pcdir/wayland-scanner.pc]=libwayland-dev
       )
       ;;
 esac
