@@ -3,7 +3,7 @@ new file mode 100644
 index 000000000000..58d9ab342fe9
 --- /dev/null
 +++ b/arch/arm64/boot/dts/qcom/qcs8550-ayn-common.dtsi
-@@ -0,0 +1,1346 @@
+@@ -0,0 +1,1351 @@
 +// SPDX-License-Identifier: BSD-3-Clause
 +/*
 + * Copyright (c) 2025, Teguh Sobirin.
@@ -866,7 +866,7 @@ index 000000000000..58d9ab342fe9
 +		compatible = "awinic,aw88166";
 +		reg = <0x34>;
 +		#sound-dai-cells = <1>;
-+		reset-gpios = <&tlmm 103 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&tlmm 103 GPIO_ACTIVE_LOW>;
 +		awinic,audio-channel = <0>;
 +		awinic,sync-flag;
 +	};
@@ -875,10 +875,15 @@ index 000000000000..58d9ab342fe9
 +		compatible = "awinic,aw88166";
 +		reg = <0x35>;
 +		#sound-dai-cells = <1>;
-+		reset-gpios = <&tlmm 100 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&tlmm 100 GPIO_ACTIVE_LOW>;
 +		awinic,audio-channel = <1>;
 +		awinic,sync-flag;
 +	};
++};
++
++&iris {
++	firmware-name = "qcom/vpu/vpu30_p4.mbn";
++	status = "okay";
 +};
 +
 +&lpass_vamacro {

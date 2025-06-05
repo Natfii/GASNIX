@@ -4,10 +4,14 @@
 
 ROCKNIX is an immutable Linux distribution for handheld gaming devices developed by a small community of enthusiasts. GASNIX is a fork that includes tools and emulators not in the original distribution. This distribution is a personal project only.
 
+This project is focused on AYN ODIN 2 devices, but can also be compiled for SD865 handhelds. I will only be testing on and releasing builds for the ODIN PORTAL, but other SM8550 builds can be made by modifying the /projects/Qualcomm/devices/SM8550/bootloader/LinuxLoader.cfg 
+
 ## Features
 
 * ROCKNIX has a very active community of developers and users.
-* Citron for NS homebrew.
+* Citron and Eden for NS homebrew.
+* Support for 2TB SD cards (Odin 2 devices only).
+* The best boot logo in the world.
 * Integrated cross-device local and remote network play.
 * In-game touch support on supported devices.
 * Fine grain control for battery life or performance.
@@ -30,6 +34,10 @@ ROCKNIX is an immutable Linux distribution for handheld gaming devices developed
     <td><img src="https://rocknix.org/_inc/images/screenshots/gamelist-view-no-metadata-immersive.png"/></td>
   </tr>
 </table>
+
+## Build
+
+https://rocknix.org/contribute/build/ 
 
 ## Licenses
 
@@ -57,4 +65,4 @@ All other software is provided under each component's respective license.  These
 
 ## Credits
 
-Like any Linux distribution, this project is not the work of one person.  It is the work of many persons all over the world who have developed the open source bits without which this project could not exist.  Special thanks to CoreELEC, LibreELEC, JELOS, ROCKNIX, and to developers and contributors across the open source community.
+Like any Linux distribution, this project is not the work of one person.  It is the work of many persons all over the world who have developed the open source bits without which this project could not exist.  Special thanks to CoreELEC, LibreELEC, JELOS, ROCKNIX, UzuCore and to developers and contributors across the open source community.
