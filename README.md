@@ -9,7 +9,7 @@ This project is focused on AYN ODIN 2 devices, but can also be compiled for SD86
 ## Features
 
 * ROCKNIX has a very active community of developers and users.
-* Citron and Eden for NS homebrew.
+* Citron and Eden(WIP) for NS homebrew.
 * Support for 2TB SD cards (Odin 2 devices only).
 * The best boot logo in the world.
 * Integrated cross-device local and remote network play.
