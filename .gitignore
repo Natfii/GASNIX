@@ -10,6 +10,7 @@
 /.ant
 /.parallel
 /.cmake
+/.ROCKNIX
 /emulationstation-next
 
 # automatically downloaded source files
