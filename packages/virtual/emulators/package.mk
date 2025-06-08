@@ -33,7 +33,7 @@ LIBRETRO_CORES="81-lr a5200-lr arduous-lr atari800-lr beetle-gba-lr beetle-lynx-
 case "${DEVICE}" in
   AMD64)
     PKG_EMUS+=" azahar-sa cemu-sa dolphin-sa lime3ds-sa mednafen melonds-sa minivmacsa mupen64plus-sa nanoboyadvance-sa pcsx2-sa     \
-               rpcs3-sa scummvmsa vita3k-sa xemu-sa duckstation-sa citron-sa eden-sa"
+               rpcs3-sa scummvmsa vita3k-sa xemu-sa duckstation-sa citron-sa"
     LIBRETRO_CORES+=" beetle-psx-lr beetle-saturn-lr bsnes-lr bsnes-hd-lr desmume-lr dolphin-lr lrps2-lr panda3ds-lr play-lr"
   ;;
   RK3588)
@@ -80,7 +80,7 @@ case "${DEVICE}" in
   SM8250|SM8550)
     [ "${ENABLE_32BIT}" == "true" ] && EMUS_32BIT="box86 daedalusx64-sa desmume-lr gpsp-lr pcsx_rearmed-lr"
     PKG_EMUS+=" aethersx2-sa azahar-sa box64 cemu-sa dolphin-sa lime3ds-sa melonds-sa nanoboyadvance-sa portmaster rpcs3-sa scummvmsa supermodel-sa \
-               yabasanshiro-sa xemu-sa duckstation-sa citron-sa eden-sa"
+               yabasanshiro-sa xemu-sa duckstation-sa citron-sa"
     LIBRETRO_CORES+=" beetle-psx-lr beetle-saturn-lr bsnes-lr bsnes-hd-lr dolphin-lr flycast2021-lr geolith-lr panda3ds-lr pcsx_rearmed-lr uae4arm kronos-lr"
     PKG_RETROARCH+=" retropie-shaders"
   ;;
@@ -567,7 +567,7 @@ makeinstall_target() {
   case ${DEVICE} in
     AMD64)
       add_emu_core switch eden eden-sa false
-      add_emu_core switch citron citron-sa false
+      add_emu_core switch citron citron-sa true
       add_es_system switch
       install_script "Start Eden.sh"
       install_script "Start Citron.sh"
@@ -577,7 +577,7 @@ makeinstall_target() {
   case ${DEVICE} in
     RK3588|SM8*)
       add_emu_core switch citron citron-sa true
-      add_emu_core switch eden eden-sa true
+      add_emu_core switch eden eden-sa false
       add_es_system switch
       install_script "Start Citron.sh"
       install_script "Start Eden.sh"
