@@ -40,12 +40,8 @@ PKG_CMAKE_OPTS_TARGET+="-DENABLE_QT=ON \
                     -DYUZU_DOWNLOAD_ANDROID_VVL=OFF \
                     -DYUZU_ENABLE_PORTABLE=OFF \
                     -DYUZU_USE_BUNDLED_FFMPEG=OFF \
-                    -Wno-shadow"
-
-#pre_configure_target() {
-  #echo ${PKG_DEPENDS_TARGET}
-  #sleed 1d
-#}
+                    -Wno-shadow  \
+                    -YUZU_USE_BUNDLED_VCPKG=ON"
 
 makeinstall_target() {
   mkdir -p ${INSTALL}/usr/bin
