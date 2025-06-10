@@ -23,7 +23,9 @@ then
   PKG_DEPENDS_TARGET+=" vulkan-loader vulkan-headers"
 fi
 
-PKG_CMAKE_OPTS_TARGET+="-DUSE_SYSTEM_QT=OFF \
+PKG_CMAKE_OPTS_TARGET+="-DENABLE_QT=ON \
+                    -DENABLE_QT6=ON \
+                    -DUSE_SYSTEM_QT=ON \
                     -DCMAKE_BUILD_TYPE=Release \
                     -DBUILD_SHARED_LIBS=OFF \
                     -DENABLE_SDL2=ON \
@@ -37,9 +39,12 @@ PKG_CMAKE_OPTS_TARGET+="-DUSE_SYSTEM_QT=OFF \
                     -DENABLE_WEB_SERVICE=OFF \
                     -DYUZU_DOWNLOAD_ANDROID_VVL=OFF \
                     -DYUZU_ENABLE_PORTABLE=OFF \
-                    -DYUZU_USE_BUNDLED_FFMPEG=OFF \
-                    -Wno-shadow  \
-                    -YUZU_USE_BUNDLED_VCPKG=ON"
+                    -DYUZU_USE_BUNDLED_FFMPEG=OFF"
+
+#pre_configure_target() {
+  #echo ${PKG_DEPENDS_TARGET}
+  #sleed 1d
+#}
 
 makeinstall_target() {
   mkdir -p ${INSTALL}/usr/bin
