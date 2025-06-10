@@ -23,9 +23,7 @@ then
   PKG_DEPENDS_TARGET+=" vulkan-loader vulkan-headers"
 fi
 
-PKG_CMAKE_OPTS_TARGET+="-DENABLE_QT=ON \
-                    -DENABLE_QT6=ON \
-                    -DUSE_SYSTEM_QT=ON \
+PKG_CMAKE_OPTS_TARGET+="-DUSE_SYSTEM_QT=OFF \
                     -DCMAKE_BUILD_TYPE=Release \
                     -DBUILD_SHARED_LIBS=OFF \
                     -DENABLE_SDL2=ON \
