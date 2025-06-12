@@ -345,4 +345,16 @@
          <players>1</players>
          <image>./images/citron.svg</image>
      </game>
+     <game>
+        <path>./start_chromium.sh</path>
+        <name>CHROME</name>
+        <desc>chrome</desc>
+        <developer>Google</developer>
+        <publisher>Google</publisher>
+        <rating>0.0</rating>
+        <releasedate>1229</releasedate>
+        <genre>Tool</genre>
+        <players>1</players>
+        <image>./images/install-rocknix.svg</image>
+    </game>
 </gameList>

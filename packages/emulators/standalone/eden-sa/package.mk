@@ -3,12 +3,12 @@
 
 PKG_NAME="eden-sa"
 PKG_LICENSE="GPLv3"
-PKG_DEPENDS_TARGET="toolchain SDL2 boost libevdev libdrm ffmpeg zlib libpng lzo libusb zstd ecm openal-soft pulseaudio alsa-lib llvm qt6 libfmt"
+PKG_DEPENDS_TARGET="toolchain SDL2 boost libevdev libdrm ffmpeg zlib libpng lzo libusb zstd ecm openal-soft pulseaudio alsa-lib llvm libfmt cmake:host ninja:host qt6-base"
 PKG_LONGDESC="Eden is the world's most popular open-source Nintendo Switch emulator, forked from the Yuzu emulator."
 PKG_TOOLCHAIN="cmake"
 PKG_SITE="https://git.eden-emu.dev/eden-emu/eden"
 PKG_URL="${PKG_SITE}.git"
-PKG_VERSION="fb3988a78a54b4a75090594a6d374ba819e0afcb"
+PKG_VERSION="1037bff8aca05f78ec6f40e35c7b17c933350033"
 
 if [ ! "${OPENGL}" = "no" ]; then
   PKG_DEPENDS_TARGET+=" ${OPENGL} glu libglvnd"
@@ -23,28 +23,11 @@ then
   PKG_DEPENDS_TARGET+=" vulkan-loader vulkan-headers"
 fi
 
-PKG_CMAKE_OPTS_TARGET+="-DENABLE_QT=ON \
-                    -DENABLE_QT6=ON \
-                    -DUSE_SYSTEM_QT=ON \
-                    -DCMAKE_BUILD_TYPE=Release \
-                    -DBUILD_SHARED_LIBS=OFF \
-                    -DENABLE_SDL2=ON \
-                    -DYUZU_USE_EXTERNAL_SDL2=OFF \
-                    -DENABLE_QT=ON \
-                    -DENABLE_QT_TRANSLATION=ON \
-                    -DUSE_DISCORD_PRESENCE=OFF \
-                    -DYUZU_TESTS=OFF \
-                    -DYUZU_ENABLE_LTO=ON \
-                    -DYUZU_USE_FASTER_LD=ON \
-                    -DENABLE_WEB_SERVICE=OFF \
-                    -DYUZU_DOWNLOAD_ANDROID_VVL=OFF \
-                    -DYUZU_ENABLE_PORTABLE=OFF \
-                    -DYUZU_USE_BUNDLED_FFMPEG=OFF"
+PKG_CMAKE_OPTS_TARGET="-DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG' -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' \
+                       -DENABLE_QT=OFF -DENABLE_QT_TRANSLATION=OFF \
+                       -DENABLE_WEB_SERVICE=OFF \   # (if you want to disable telemetry services on device)
+                       -DENABLE_TESTING=OFF -DENABLE_PROGRAMS=OFF"
 
-#pre_configure_target() {
-  #echo ${PKG_DEPENDS_TARGET}
-  #sleed 1d
-#}
 
 makeinstall_target() {
   mkdir -p ${INSTALL}/usr/bin
